@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, type ReactNode, type ImgHTMLAttributes } from "react";
-import { ArrowUpRight, ArrowRight, MapPin, Phone, Instagram, Menu, X } from "lucide-react";
+import { useEffect, useRef, useState, type ReactNode, type ImgHTMLAttributes } from "react";
+import { ArrowRight, MapPin, Phone, Instagram, Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 import hero from "@/assets/hero-desktop.png";
 import heroMobile from "@/assets/hero-mobile.png";
@@ -110,7 +110,6 @@ function ContactButton({
     >
       <WhatsApp />
       {children}
-      <ArrowUpRight size={18} />
     </a>
   );
 }
@@ -230,6 +229,23 @@ function ProjectBuilder() {
 }
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+  const [heroPassed, setHeroPassed] = useState(false);
+
+  useEffect(() => {
+    const heroElement = heroRef.current;
+    if (!heroElement) return;
+    const updateVisibility = () => {
+      setHeroPassed(heroElement.getBoundingClientRect().bottom <= 0);
+    };
+    updateVisibility();
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    window.addEventListener("resize", updateVisibility);
+    return () => {
+      window.removeEventListener("scroll", updateVisibility);
+      window.removeEventListener("resize", updateVisibility);
+    };
+  }, []);
   return (
     <div className="site-shell design-v2">
       <a href="#conteudo" className="skip-link">
@@ -252,7 +268,7 @@ function Index() {
           <a href="#loja">A loja</a>
         </nav>
         <a className="header-contact" href={wa(HELLO)} target="_blank" rel="noopener noreferrer">
-          Fale no WhatsApp <ArrowUpRight size={18} />
+          <WhatsApp /> Fale no WhatsApp
         </a>
         <button
           className="menu-toggle"
@@ -275,13 +291,12 @@ function Index() {
           ].map(([href, label]) => (
             <a key={href} href={href} onClick={() => setMenuOpen(false)}>
               {label}
-              <ArrowUpRight size={18} />
             </a>
           ))}
         </nav>
       )}
       <main id="conteudo">
-        <section className="immersive-hero" aria-labelledby="hero-title">
+        <section ref={heroRef} className="immersive-hero" aria-labelledby="hero-title">
           <picture className="immersive-photo">
             <source media="(max-width: 600px)" srcSet={heroMobileWebp} type="image/webp" />
             <source media="(max-width: 600px)" srcSet={heroMobile} type="image/png" />
@@ -325,7 +340,7 @@ function Index() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Enviar minha referência <ArrowUpRight size={18} />
+            Enviar minha referência
           </a>
         </div>
         <section id="colecao" className="section wrap">
@@ -355,10 +370,6 @@ function Index() {
               >
                 <div className="collection-image">
                   <Photo src={item.image} alt={item.name} width="700" height="950" loading="lazy" />
-                  <span className="image-category">{item.category}</span>
-                  <span className="card-arrow">
-                    <WhatsApp className="size-5" />
-                  </span>
                 </div>
                 <div className="card-title">
                   <h3>{item.name}</h3>
@@ -434,7 +445,7 @@ function Index() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Pedir orçamento de parede verde <ArrowUpRight size={19} />
+              Pedir orçamento de parede verde
             </a>
           </div>
           <div className="green-image">
@@ -563,7 +574,7 @@ function Index() {
               </p>
               <div className="store-actions">
                 <a className="contact-button" href={MAPS} target="_blank" rel="noopener noreferrer">
-                  Como chegar <ArrowUpRight size={18} />
+                  Como chegar
                 </a>
                 <a
                   className="text-link"
@@ -588,7 +599,7 @@ function Index() {
           </a>
           <p>A diferença está nos detalhes.</p>
           <a href={wa(HELLO)} target="_blank" rel="noopener noreferrer">
-            Fale no WhatsApp <ArrowUpRight size={18} />
+            <WhatsApp /> Fale no WhatsApp
           </a>
         </div>
         <div className="wrap footer-bottom">
@@ -597,7 +608,7 @@ function Index() {
         </div>
       </footer>
       <a
-        className="floating-contact"
+        className={`floating-contact${heroPassed ? " is-visible" : ""}`}
         href={wa(HELLO)}
         aria-label="Conversar com a Demais pelo WhatsApp"
         target="_blank"

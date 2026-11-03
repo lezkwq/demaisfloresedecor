@@ -212,15 +212,6 @@
   object-fit: cover;
   object-position: center;
 }
-.immersive-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background:
-    linear-gradient(90deg, #071b10c9 0%, #071b1080 40%, #071b1000 74%),
-    linear-gradient(180deg, #071b1070 0%, #071b1000 25%, #071b1020 75%, #071b1080 100%);
-}
 .immersive-content {
   padding-block: 200px 110px;
 }
@@ -307,7 +298,7 @@
   white-space: nowrap;
 }
 .design-v2 h2 {
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: -0.025em;
 }
 .design-v2 h3 {
@@ -466,16 +457,6 @@
   .immersive-photo img {
     object-position: center;
   }
-  .immersive-hero::before {
-    background: linear-gradient(
-      180deg,
-      #071b1055 0%,
-      #071b1020 18%,
-      #071b1070 42%,
-      #071b10bf 70%,
-      #071b10d9 100%
-    );
-  }
   .immersive-content {
     width: calc(100% - 40px);
     padding-block: 145px 135px;
@@ -533,6 +514,11 @@
   }
   .design-v2 .floating-contact {
     border-radius: 0;
+  }
+  .design-v2 .floating-contact:not(.is-visible) {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
   }
   .design-v2 .floating-contact span {
     font-size: 13px;
