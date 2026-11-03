@@ -19,8 +19,8 @@
  */
 
 @theme inline {
-  --font-display: "Fraunces", Georgia, serif;
-  --font-sans: "Figtree", system-ui, sans-serif;
+  --font-display: "Bodoni Moda", Georgia, serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
   --color-wine-deep: var(--wine-deep);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -66,7 +66,7 @@
 
 :root {
   --radius: 0.25rem;
-  --background: oklch(0.972 0.013 84);
+  --background: oklch(0.995 0.002 110);
   --foreground: oklch(0.29 0.034 158);
   --card: oklch(0.985 0.01 75);
   --card-foreground: oklch(0.24 0.05 20);
@@ -133,6 +133,410 @@
 }
 @utility bloom-in {
   animation: bloom 1.1s cubic-bezier(0.2, 0.7, 0.1, 1) both;
+}
+
+/* Immersive floral direction: the supplied photograph leads the first screen. */
+.immersive-header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 10;
+  min-height: 122px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  color: #fff;
+  border-bottom: 1px solid #ffffff30;
+}
+.immersive-header .brand {
+  color: white;
+}
+.immersive-header .brand-dot {
+  color: #f3ad8b;
+}
+.immersive-header .brand img {
+  width: 48px;
+  height: 48px;
+}
+.immersive-header .brand > span {
+  font-weight: 500;
+}
+.immersive-header .header-contact {
+  border: 1px solid #ffffff80;
+  padding: 12px 18px;
+  color: white;
+}
+.immersive-header .header-contact:hover {
+  background: #ffffff20;
+}
+.immersive-header .nav-dot {
+  background: #ffc0a3;
+}
+.immersive-header .desktop-nav a:hover {
+  color: #ffd6c4;
+}
+.immersive-header .menu-toggle {
+  color: white;
+}
+.design-v2 .mobile-menu {
+  position: absolute;
+  top: 91px;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: #173a25;
+  color: white;
+  border: none;
+}
+.design-v2 .mobile-menu a {
+  border-color: #ffffff30;
+}
+.immersive-hero {
+  min-height: 830px;
+  height: min(100svh, 1100px);
+  position: relative;
+  display: flex;
+  align-items: end;
+  background: #1e472d;
+  isolation: isolate;
+  color: white;
+}
+.immersive-photo {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+}
+.immersive-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.immersive-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg, #071b10c9 0%, #071b1080 40%, #071b1000 74%),
+    linear-gradient(180deg, #071b1070 0%, #071b1000 25%, #071b1020 75%, #071b1080 100%);
+}
+.immersive-content {
+  padding-block: 200px 110px;
+}
+.immersive-content h1 {
+  max-width: 1000px;
+  font-size: clamp(78px, 7.25vw, 114px);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  color: white;
+  margin-bottom: 28px;
+}
+.immersive-content h1 span {
+  display: block;
+}
+.immersive-content h1 em {
+  display: block;
+  font-weight: 400;
+  color: inherit;
+}
+.immersive-content > p {
+  max-width: 440px;
+  font-size: 15px;
+  line-height: 1.85;
+  color: #fffffff2;
+  margin-bottom: 28px;
+}
+.immersive-content .contact-button {
+  background: #f0ac89;
+  color: #173524;
+  font-size: 13px;
+  font-weight: 700;
+  padding-inline: 23px;
+  min-height: 56px;
+}
+.immersive-content .contact-button:hover {
+  background: #ffd0b9;
+}
+.immersive-rating {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  width: fit-content;
+  font-size: 11px;
+  color: #ffffffe8;
+  margin-top: 25px;
+}
+.immersive-rating > span:first-child {
+  color: #ffcfaa;
+  letter-spacing: 2px;
+}
+.immersive-rating strong {
+  font-weight: 600;
+}
+.hero-explore {
+  position: absolute;
+  right: max(48px, calc((100% - 1240px) / 2));
+  bottom: 39px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 12px;
+  color: white;
+}
+.quick-contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding-block: 28px;
+  border-bottom: 1px solid #d9dfd7;
+}
+.quick-contact p {
+  font-size: 14px;
+  color: #5c6d5e;
+}
+.quick-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.design-v2 h2 {
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+.design-v2 h3 {
+  font-weight: 400;
+}
+.design-v2 .eyebrow {
+  font-size: 13px;
+  letter-spacing: 0;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+.design-v2 .section-heading > p {
+  max-width: 330px;
+  font-size: 14px;
+}
+.design-v2 .card-title {
+  margin-left: 0;
+}
+.design-v2 .card-title h3 {
+  font-size: 30px;
+}
+.design-v2 .collection-card > p {
+  margin-left: 0;
+  font-size: 13px;
+}
+.design-v2 .image-category {
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 12px;
+}
+.design-v2 .christmas-copy h2 {
+  font-size: clamp(46px, 4.4vw, 66px);
+}
+.design-v2 .christmas-copy > p:not(.eyebrow) {
+  font-size: 15px;
+}
+.design-v2 .christmas-copy .season-note {
+  font-style: normal;
+}
+.design-v2 .green-copy > p:not(.eyebrow),
+.design-v2 .project-copy > p:not(.eyebrow) {
+  font-size: 15px;
+  color: #5d705e;
+}
+.design-v2 .project-section {
+  background: #eef2eb;
+}
+.design-v2 .project-steps {
+  margin-top: 30px;
+}
+.direct-project-contact {
+  margin-top: 28px;
+}
+.collection-action {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2e513b;
+  border-bottom: 1px solid #abb9a8;
+  padding-bottom: 4px;
+}
+.direct-project-contact > p {
+  font-size: 11px;
+  color: #6b7a68;
+  margin-top: 12px;
+}
+.design-v2 .builder {
+  background: #fff;
+}
+.design-v2 .chips button {
+  font-size: 12px;
+}
+.design-v2 .review-grid blockquote {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.85;
+}
+.design-v2 .store-section {
+  background: #eef2eb;
+}
+.design-v2 .site-footer {
+  background: #fff;
+}
+.design-v2 .floating-contact {
+  border-radius: 32px;
+  gap: 10px;
+  padding: 14px 19px;
+}
+.design-v2 .floating-contact span {
+  display: inline;
+  font-size: 12px;
+  font-weight: 600;
+}
+@media (max-width: 1000px) {
+  .immersive-content h1 {
+    font-size: 85px;
+  }
+  .immersive-header .desktop-nav {
+    gap: 17px;
+    font-size: 12px;
+  }
+  .immersive-header .header-contact {
+    font-size: 11px;
+    padding: 11px;
+  }
+}
+@media (max-width: 800px) {
+  .immersive-header {
+    min-height: 104px;
+  }
+  .immersive-content h1 {
+    font-size: 75px;
+  }
+  .immersive-hero {
+    min-height: 850px;
+  }
+  .immersive-content > p {
+    font-size: 14px;
+    max-width: 390px;
+  }
+  .quick-contact {
+    align-items: start;
+  }
+  .quick-contact p {
+    font-size: 12px;
+  }
+  .quick-contact a {
+    font-size: 12px;
+  }
+  .design-v2 .mobile-menu {
+    top: 104px;
+  }
+}
+@media (max-width: 600px) {
+  .immersive-header {
+    min-height: 92px;
+    width: calc(100% - 40px);
+  }
+  .immersive-header .brand img {
+    width: 39px;
+    height: 39px;
+  }
+  .immersive-header .brand > span {
+    font-size: 27px;
+  }
+  .design-v2 .mobile-menu {
+    top: 92px;
+  }
+  .immersive-hero {
+    height: 100svh;
+    min-height: 790px;
+    max-height: 1000px;
+  }
+  .immersive-photo img {
+    object-position: center;
+  }
+  .immersive-hero::before {
+    background: linear-gradient(
+      180deg,
+      #071b1055 0%,
+      #071b1020 18%,
+      #071b1070 42%,
+      #071b10bf 70%,
+      #071b10d9 100%
+    );
+  }
+  .immersive-content {
+    width: calc(100% - 40px);
+    padding-block: 145px 135px;
+  }
+  .immersive-content h1 {
+    font-size: clamp(40px, 11.8vw, 52px);
+    line-height: 1.06;
+    letter-spacing: -0.025em;
+    margin-bottom: 22px;
+  }
+  .immersive-content h1 em {
+    font-size: 0.88em;
+  }
+  .immersive-content > p {
+    max-width: 340px;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .immersive-content .contact-button {
+    font-size: 12px;
+    min-height: 54px;
+    padding-inline: 16px;
+    gap: 10px;
+  }
+  .immersive-rating {
+    font-size: 10px;
+    gap: 8px;
+    margin-top: 23px;
+  }
+  .hero-explore {
+    display: none;
+  }
+  .quick-contact {
+    padding-block: 23px;
+    flex-direction: column;
+    gap: 13px;
+  }
+  .quick-contact p {
+    font-size: 13px;
+    line-height: 1.75;
+  }
+  .design-v2 h2 {
+    font-size: 39px;
+    line-height: 1.16;
+  }
+  .design-v2 .section-heading > p {
+    font-size: 14px;
+  }
+  .design-v2 .christmas-copy h2 {
+    font-size: 46px;
+  }
+  .design-v2 .reviews-heading h2 {
+    font-size: 39px;
+  }
+  .design-v2 .floating-contact {
+    border-radius: 0;
+  }
+  .design-v2 .floating-contact span {
+    font-size: 13px;
+  }
 }
 
 html {
@@ -481,8 +885,8 @@ h2 em {
 h2 {
   font-size: clamp(38px, 4.1vw, 58px);
   line-height: 1.13;
-  font-weight: 300;
-  letter-spacing: -2.2px;
+  font-weight: 400;
+  letter-spacing: -1.4px;
 }
 .section-heading {
   display: flex;

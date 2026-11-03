@@ -35,7 +35,7 @@ As 20 fotos individuais fornecidas passaram pela ferramenta de edição de image
 
 A edição generativa reconstrói as áreas cobertas e pode produzir pequenas diferenças locais. Os produtos, o enquadramento e o ambiente das referências orientaram a preservação. Os arquivos não representam fotografias novas de outros espaços.
 
-Paleta: verde profundo, creme e tons naturais; acento laranja da logo. Tipografia: Fraunces e Figtree. Escolhida a composição editorial com fotografia original vertical e título amplo ao lado, para preservar o enquadramento real. A alternativa de uma cena horizontal gerada foi descartada conforme a correção do usuário. A página respeita preferência por movimento reduzido.
+Revisão de design: hero com foto em tela inteira, expansão 16:9 para desktop e foto vertical enviada para mobile. Bodoni Moda e Manrope, textos diretos, CTA de orçamento na primeira dobra e montador opcional. Paleta verde, branco e pêssego. Movimento reduzido respeitado.
 
 Avaliações são trechos das avaliações reais enviadas pelo usuário; nota e quantidade refletem o briefing, sem atualização automática. Itens e valores são consultados com a equipe, sem promessas de estoque, prazo ou serviço de entrega.
 

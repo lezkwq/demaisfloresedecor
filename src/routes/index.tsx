@@ -1,19 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, type ReactNode, type ImgHTMLAttributes } from "react";
-import {
-  ArrowUpRight,
-  ArrowRight,
-  MapPin,
-  Phone,
-  Instagram,
-  Menu,
-  X,
-  Leaf,
-  Sparkles,
-  Flower2,
-} from "lucide-react";
+import { ArrowUpRight, ArrowRight, MapPin, Phone, Instagram, Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
-import hero from "@/assets/arranjo-ambar.png";
+import hero from "@/assets/hero-desktop.png";
+import heroMobile from "@/assets/hero-mobile.png";
+import heroMobileWebp from "@/assets/hero-mobile.webp";
 import pink from "@/assets/arranjo-magnolias.png";
 import gold from "@/assets/vasos-dourados.png";
 import plants from "@/assets/plantas-permanentes.png";
@@ -22,7 +13,7 @@ import tree from "@/assets/natal-arvore.png";
 import wreath from "@/assets/natal-guirlanda.png";
 import facade from "@/assets/fachada.png";
 
-import heroWebp from "@/assets/arranjo-ambar.webp";
+import heroWebp from "@/assets/hero-desktop.webp";
 import pinkWebp from "@/assets/arranjo-magnolias.webp";
 import goldWebp from "@/assets/vasos-dourados.webp";
 import plantsWebp from "@/assets/plantas-permanentes.webp";
@@ -74,7 +65,22 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: hero },
       { name: "twitter:card", content: "summary_large_image" },
     ],
-    links: [{ rel: "preload", as: "image", type: "image/webp", href: heroWebp }],
+    links: [
+      {
+        rel: "preload",
+        as: "image",
+        type: "image/webp",
+        href: heroWebp,
+        media: "(min-width: 601px)",
+      },
+      {
+        rel: "preload",
+        as: "image",
+        type: "image/webp",
+        href: heroMobileWebp,
+        media: "(max-width: 600px)",
+      },
+    ],
   }),
   component: Index,
 });
@@ -112,20 +118,20 @@ const collection = [
   {
     image: pink,
     category: "Arranjos",
-    name: "Delicadeza em cada pétala",
-    note: "Magnólias rosadas, texturas e ramos em uma composição cheia de presença.",
+    name: "Arranjos permanentes",
+    note: "Magnólias rosadas e ramos em composições permanentes.",
   },
   {
     image: plants,
     category: "Plantas",
-    name: "Um novo olhar para o verde",
+    name: "Plantas e vasos",
     note: "Plantas permanentes e vasos para levar vida e personalidade aos ambientes.",
   },
   {
     image: gold,
     category: "Decor",
-    name: "Detalhes que fazem a diferença",
-    note: "Vasos, objetos e acabamentos que conversam com o seu estilo.",
+    name: "Objetos de decoração",
+    note: "Vasos, lanternas e peças para completar a decoração.",
   },
 ];
 const reviews = [
@@ -225,17 +231,11 @@ function ProjectBuilder() {
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div className="site-shell">
+    <div className="site-shell design-v2">
       <a href="#conteudo" className="skip-link">
         Pular para o conteúdo
       </a>
-      <div className="top-strip">
-        <span>FLORES PERMANENTES & DECORAÇÃO</span>
-        <a href="#natal">
-          O encanto do Natal já está por aqui <ArrowUpRight size={13} />
-        </a>
-      </div>
-      <header className="site-header wrap">
+      <header className="immersive-header wrap">
         <a href="#" className="brand" aria-label="Demais Flores e Decor, início">
           <Photo src={logo} alt="" width="52" height="52" />
           <span>
@@ -244,7 +244,7 @@ function Index() {
           </span>
         </a>
         <nav className="desktop-nav" aria-label="Menu principal">
-          <a href="#colecao">Nosso universo</a>
+          <a href="#colecao">Produtos</a>
           <a href="#natal">
             Natal <span className="nav-dot" />
           </a>
@@ -252,7 +252,7 @@ function Index() {
           <a href="#loja">A loja</a>
         </nav>
         <a className="header-contact" href={wa(HELLO)} target="_blank" rel="noopener noreferrer">
-          Vamos conversar <ArrowUpRight size={18} />
+          Fale no WhatsApp <ArrowUpRight size={18} />
         </a>
         <button
           className="menu-toggle"
@@ -268,7 +268,7 @@ function Index() {
       {menuOpen && (
         <nav id="mobile-menu" className="mobile-menu" aria-label="Menu para celular">
           {[
-            ["#colecao", "Nosso universo"],
+            ["#colecao", "Produtos"],
             ["#natal", "Natal"],
             ["#projeto", "Seu projeto"],
             ["#loja", "Visite a loja"],
@@ -281,85 +281,69 @@ function Index() {
         </nav>
       )}
       <main id="conteudo">
-        <section className="hero wrap">
-          <div className="hero-copy">
-            <p className="eyebrow">
-              <span /> BALNEÁRIO CAMBORIÚ, SC
-            </p>
-            <h1>
-              A beleza mora
-              <br />
-              nos <em>detalhes.</em>
+        <section className="immersive-hero" aria-labelledby="hero-title">
+          <picture className="immersive-photo">
+            <source media="(max-width: 600px)" srcSet={heroMobileWebp} type="image/webp" />
+            <source media="(max-width: 600px)" srcSet={heroMobile} type="image/png" />
+            <source srcSet={heroWebp} type="image/webp" />
+            <img
+              src={hero}
+              alt="Flores permanentes em rosa suave, seguradas diante de uma parede de folhagens verdes"
+              width="1920"
+              height="1080"
+              fetchPriority="high"
+            />
+          </picture>
+          <div className="immersive-content wrap">
+            <h1 id="hero-title">
+              <span>Flores & decor</span>
+              <em>para a sua casa.</em>
             </h1>
-            <p className="hero-description">
-              Flores que permanecem. Ambientes que acolhem. Encontre o toque Demais para transformar
-              o seu espaço.
+            <p>
+              Arranjos permanentes, plantas e decoração em Balneário Camboriú. Encontre com a nossa
+              equipe as peças para o seu espaço.
             </p>
-            <div className="hero-actions">
-              <ContactButton>Encontre sua inspiração</ContactButton>
-              <a href="#colecao" className="text-link">
-                Explore a coleção <ArrowRight size={17} />
-              </a>
-            </div>
-            <a href="#avaliacoes" className="rating">
-              <span className="stars" aria-label="Avaliação de 4,7 de 5">
-                ★★★★★
-              </span>
-              <strong>4,7</strong>
-              <span>267 avaliações no Google</span>
+            <ContactButton message="Olá, Demais! Vim pelo site e quero sugestões e um orçamento para decorar meu espaço.">
+              Pedir orçamento no WhatsApp
+            </ContactButton>
+            <a href="#avaliacoes" className="immersive-rating">
+              <span aria-hidden="true">★★★★★</span>
+              <strong>4,7 no Google</strong>
+              <span>267 avaliações</span>
             </a>
-            <div className="hero-footnote">
-              <Leaf size={17} />
-              <span>Natureza no olhar. Personalidade no seu espaço.</span>
-            </div>
           </div>
-          <div className="hero-visual">
-            <div className="hero-image-frame">
-              <Photo
-                src={hero}
-                alt="Arranjo âmbar em vaso de cerâmica, com lanternas de madeira na loja Demais"
-                width="900"
-                height="1200"
-                fetchPriority="high"
-              />
-            </div>
-            <div className="image-tag">
-              <span>FEITO PARA INSPIRAR</span>
-              <p>
-                O extraordinário
-                <br />
-                está no detalhe.
-              </p>
-              <ArrowUpRight size={25} />
-            </div>
-            <span className="vertical-caption">DEMAIS FLORES & DECOR — SINTA-SE EM CASA</span>
-          </div>
+          <a href="#colecao" className="hero-explore">
+            Conheça nossos arranjos <ArrowRight size={17} />
+          </a>
         </section>
-        <div className="manifesto-strip">
-          <div className="wrap">
-            <span>Beleza que permanece</span>
-            <Flower2 />
-            <span>Texturas que acolhem</span>
-            <Flower2 />
-            <span>Detalhes que transformam</span>
-            <Flower2 />
-          </div>
+        <div className="quick-contact wrap">
+          <p>Tem uma foto do ambiente? Envie no WhatsApp e peça sugestões para compor.</p>
+          <a
+            href={wa(
+              "Olá, Demais! Posso enviar uma foto do meu ambiente para receber sugestões de arranjos e decoração?",
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Enviar minha referência <ArrowUpRight size={18} />
+          </a>
         </div>
         <section id="colecao" className="section wrap">
           <div className="section-heading">
             <div>
-              <p className="eyebrow">O UNIVERSO DEMAIS</p>
               <h2>
-                Seu espaço, <em>com mais alma.</em>
+                Arranjos, plantas e peças
+                <br />
+                para o seu espaço.
               </h2>
             </div>
             <p>
-              Uma seleção de flores permanentes, plantas e objetos para compor histórias. A sua, do
-              seu jeito.
+              Conheça uma seleção da nossa loja. Gostou de uma composição? Fale com a equipe para
+              consultar opções e valores.
             </p>
           </div>
           <div className="collection-grid">
-            {collection.map((item, index) => (
+            {collection.map((item) => (
               <a
                 className="collection-card"
                 key={item.name}
@@ -373,14 +357,14 @@ function Index() {
                   <Photo src={item.image} alt={item.name} width="700" height="950" loading="lazy" />
                   <span className="image-category">{item.category}</span>
                   <span className="card-arrow">
-                    <ArrowUpRight size={22} />
+                    <WhatsApp className="size-5" />
                   </span>
                 </div>
                 <div className="card-title">
-                  <span>0{index + 1}</span>
                   <h3>{item.name}</h3>
                 </div>
                 <p>{item.note}</p>
+                <span className="collection-action">Consultar pelo WhatsApp</span>
               </a>
             ))}
           </div>
@@ -408,52 +392,38 @@ function Index() {
                 height="520"
                 loading="lazy"
               />
-              <span className="christmas-seal">
-                Tempo de
-                <br />
-                <em>encantar</em>
-                <Sparkles size={20} />
-              </span>
             </div>
             <div className="christmas-copy">
-              <p className="eyebrow">
-                <Sparkles size={15} /> NATAL NA DEMAIS
-              </p>
+              <p className="eyebrow">Natal na Demais</p>
               <h2>
-                É tempo de
+                O Natal começa
                 <br />
-                vestir a casa
-                <br />
-                de <em>encanto.</em>
+                nos detalhes.
               </h2>
               <p>
-                Os encontros ficam mais especiais quando cada detalhe recebe carinho. Árvores,
-                guirlandas e composições natalinas para celebrar com a sua personalidade.
+                Árvores, guirlandas e arranjos para preparar a casa para os encontros de fim de ano.
+                Conheça as opções de Natal da Demais.
               </p>
-              <p className="season-note">
-                Novembro chegou. Que tal começar a imaginar o seu Natal?
-              </p>
+              <p className="season-note">Escolha os detalhes do seu Natal com a nossa equipe.</p>
               <ContactButton
                 light
                 message="Olá, Demais! Quero conhecer as opções de árvores, guirlandas e decoração de Natal."
               >
-                Planejar meu Natal
+                Consultar opções de Natal
               </ContactButton>
             </div>
           </div>
         </section>
         <section className="section wrap green-section">
           <div className="green-copy">
-            <p className="eyebrow">VERDE QUE TRANSFORMA</p>
             <h2>
-              Uma nova vida
+              Paredes verdes.
               <br />
-              para as suas <em>paredes.</em>
+              Mais natureza no ambiente.
             </h2>
             <p>
-              O verde traz textura, profundidade e um novo jeito de sentir o ambiente. Conheça as
-              possibilidades de paredes verdes com plantas permanentes para casas e espaços
-              comerciais.
+              Folhagens permanentes para compor paredes em casas, escritórios e espaços comerciais.
+              Envie uma foto e as medidas para conversar sobre o seu projeto.
             </p>
             <p>Conte com nossa equipe para conversar sobre composição e montagem no seu espaço.</p>
             <a
@@ -464,7 +434,7 @@ function Index() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Vamos imaginar seu projeto <ArrowUpRight size={19} />
+              Pedir orçamento de parede verde <ArrowUpRight size={19} />
             </a>
           </div>
           <div className="green-image">
@@ -475,21 +445,23 @@ function Index() {
               height="900"
               loading="lazy"
             />
-            <span>MAIS VERDE. MAIS POSSIBILIDADES.</span>
           </div>
         </section>
         <section id="projeto" className="project-section">
           <div className="wrap project-grid">
             <div className="project-copy">
-              <p className="eyebrow">SEU PRÓXIMO DETALHE FAVORITO</p>
               <h2>
-                Vamos dar forma
-                <br />à sua <em>ideia?</em>
+                Conte o que procura.
+                <br />A gente ajuda a escolher.
               </h2>
               <p>
-                Um arranjo para a sala, um novo verde para o escritório ou aquele Natal que você
-                está imaginando. Conte um pouco do que procura e envie sua mensagem pronta.
+                Você pode falar direto com a equipe ou selecionar suas preferências ao lado para
+                adiantar a conversa.
               </p>
+              <div className="direct-project-contact">
+                <ContactButton>Pedir orçamento no WhatsApp</ContactButton>
+                <p>Prefere conversar? Não é preciso preencher as opções.</p>
+              </div>
               <div className="project-steps">
                 {[
                   [
@@ -517,10 +489,7 @@ function Index() {
         </section>
         <section id="avaliacoes" className="section wrap reviews-section">
           <div className="reviews-heading">
-            <p className="eyebrow">CARINHO QUE VOLTA</p>
-            <h2>
-              Quem entra, <em>sente.</em>
-            </h2>
+            <h2>Quem conhece a Demais conta.</h2>
             <div className="review-score">
               <strong>4,7</strong>
               <div>
@@ -557,17 +526,9 @@ function Index() {
                 height="880"
                 loading="lazy"
               />
-              <figcaption>
-                Foto da fachada com limpeza digital de veículos e elementos sobrepostos.
-              </figcaption>
             </figure>
             <div className="store-copy">
-              <p className="eyebrow">DE PORTAS ABERTAS PARA VOCÊ</p>
-              <h2>
-                Seu próximo detalhe
-                <br />
-                está <em>bem aqui.</em>
-              </h2>
+              <h2>Venha escolher de perto.</h2>
               <p>
                 Venha conhecer de perto as texturas, cores e possibilidades da Demais Flores &
                 Decor.
@@ -627,7 +588,7 @@ function Index() {
           </a>
           <p>A diferença está nos detalhes.</p>
           <a href={wa(HELLO)} target="_blank" rel="noopener noreferrer">
-            Vamos conversar <ArrowUpRight size={18} />
+            Fale no WhatsApp <ArrowUpRight size={18} />
           </a>
         </div>
         <div className="wrap footer-bottom">
@@ -643,7 +604,7 @@ function Index() {
         rel="noopener noreferrer"
       >
         <WhatsApp className="size-7" />
-        <span>Converse com a Demais</span>
+        <span>Pedir orçamento no WhatsApp</span>
       </a>
     </div>
   );
