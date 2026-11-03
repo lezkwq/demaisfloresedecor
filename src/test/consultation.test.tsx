@@ -10,14 +10,14 @@ describe("Consulta de decoração pelo WhatsApp", () => {
     const Home = Route.options.component as ComponentType;
     render(<Home />);
 
-    fireEvent.click(screen.getByRole("button", { name: "Decoração de Natal", exact: true }));
-    fireEvent.click(screen.getByRole("button", { name: "Empresa ou escritório", exact: true }));
-    fireEvent.click(screen.getByRole("button", { name: "Quero sugestões", exact: true }));
+    fireEvent.click(screen.getByRole("button", { name: "Decoração de Natal" }));
+    fireEvent.click(screen.getByRole("button", { name: "Empresa ou escritório" }));
+    fireEvent.click(screen.getByRole("button", { name: "Quero sugestões" }));
     fireEvent.change(screen.getByRole("textbox"), {
       target: { value: "Recepção & sala — 2 m\nVerde e dourado" },
     });
 
-    const link = screen.getByRole("link", { name: "Pedir sugestões no WhatsApp", exact: true });
+    const link = screen.getByRole("link", { name: "Pedir sugestões no WhatsApp" });
     const url = new URL(link.getAttribute("href")!);
     const message = url.searchParams.get("text");
     expect(url.hostname).toBe("wa.me");
@@ -26,7 +26,7 @@ describe("Consulta de decoração pelo WhatsApp", () => {
     expect(message).toContain("Ambiente: Empresa ou escritório");
     expect(message).toContain("Cores: Quero sugestões");
     expect(message).toContain("Recepção & sala — 2 m\nVerde e dourado");
-    expect(screen.getByRole("button", { name: "Arranjo permanente", exact: true })).toHaveAttribute(
+    expect(screen.getByRole("button", { name: "Arranjo permanente" })).toHaveAttribute(
       "aria-pressed",
       "false",
     );
