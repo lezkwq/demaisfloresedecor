@@ -221,7 +221,10 @@
   font-weight: 400;
   letter-spacing: -0.035em;
   line-height: 1.02;
-  color: white;
+  color: #fff0c2;
+  -webkit-text-stroke: 1.4px #12351f;
+  paint-order: stroke fill;
+  text-shadow: 0 2px 3px #092513;
   margin-bottom: 28px;
 }
 .immersive-content h1 span {
@@ -236,7 +239,13 @@
   max-width: 440px;
   font-size: 15px;
   line-height: 1.85;
-  color: #fffffff2;
+  color: #fffdf5;
+  font-weight: 600;
+  -webkit-text-stroke: 0.3px #12351f;
+  paint-order: stroke fill;
+  text-shadow:
+    0 1px 2px #092513,
+    0 2px 4px #092513;
   margin-bottom: 28px;
 }
 .immersive-content .contact-button {
@@ -251,21 +260,34 @@
   background: #ffd0b9;
 }
 .immersive-rating {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 5px 12px;
   align-items: center;
   width: fit-content;
   font-size: 11px;
-  color: #ffffffe8;
+  color: #203d29;
+  background: #fffaf0;
+  border: 1px solid #e8dcc0;
+  border-radius: 12px;
+  padding: 13px 18px;
+  box-shadow: 0 3px 12px #17352426;
   margin-top: 25px;
 }
 .immersive-rating > span:first-child {
-  color: #ffcfaa;
+  color: #a35d13;
   letter-spacing: 2px;
+  font-size: 14px;
 }
 .immersive-rating strong {
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 13px;
+}
+.immersive-rating > span:last-child {
+  grid-column: 1 / -1;
+  text-align: center;
+  font-size: 11px;
+  color: #5b685a;
 }
 .hero-explore {
   position: absolute;
